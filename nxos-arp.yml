@@ -1,0 +1,27 @@
+---
+- name: ARP NXOS
+  hosts: AGG_DC
+  gather_facts: no  
+
+  tasks:
+   - name: INFORMATION ARP
+     nxos_command:
+       commands: show ip arp
+     register: facts
+   
+   - name: DEBUG FACTS 
+     debug: 
+       var: facts
+
+
+   # - copy: content="{{ facts | to_nice_json }}" dest="./configurations/{{ inventory_hostname }}_arp.json"
+
+   - name: COPY FILE TO CONFIGURATIONS
+     template:
+       src: facts.j2
+       dest: "./configurations/{{ inventory_hostname}}_arp.txt"
+
+
+   - name: DEBUG HOSTNAME  
+     debug: 
+       var: ansible_net_hostname

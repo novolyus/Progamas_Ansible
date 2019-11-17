@@ -1,0 +1,12 @@
+---
+- name: Create access vlans with ios_l2
+  hosts: DC1
+  gather_facts: no
+
+  tasks:
+   - name:  create and add vlan to interfaces vlan 50
+     ios_l2_interface:
+       name: Ethernet0/2
+       mode: trunk
+       access_vlan: 50
+ 

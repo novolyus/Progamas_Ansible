@@ -1,0 +1,4 @@
+---
+- name: Add DNS server
+  ios_config:
+    lines: ip name-server {{dns}}

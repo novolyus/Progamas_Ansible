@@ -1,0 +1,34 @@
+---
+- name: Configure NTP servers
+  hosts: all
+  gather_facts: none
+  vars: 
+   - server1: 150.214.94.5 
+   - server2: 130.206.3.166 
+
+  tasks:
+    - name: CONFIGURE NTP SERVERS
+      ios_config:
+         lines: 
+           - no ntp server 10.25.215.65
+           - no ntp server 10.123.218.26
+           - no ntp server 10.25
+           - ntp server {{ server1 }}
+           - ntp server {{ server2 }}
+         save_when: modified
+      when: ansible_network_os == 'ios'
+       
+
+    - name: CONFIGURE NTP SERVERS
+      nxos_config:
+         lines: 
+           - no ntp server 10.25.215.65
+           - no ntp server 10.123.218.26
+           - ntp server {{ server1 }}
+           - ntp server {{ server2 }}
+         save_when: modified
+      when: ansible_network_os == 'nxos'
+         
+
+
+         

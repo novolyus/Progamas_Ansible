@@ -1,0 +1,16 @@
+---
+- name: NTP PARSER 2
+  hosts: WAN
+  gather_facts: no
+  vars:
+    ntp_parse_path: /etc/ansible/parsers/show_ntp_associations3.yaml
+
+  tasks:
+
+    - name: get show ntp associations
+      ios_command:
+        commands: show ntp associations detail
+      register: ntp_output
+
+    - set_fact:
+        ios_ntp: "{{ ntp_output.stdout[0] | parse_cli(ntp_parse_path) }}"

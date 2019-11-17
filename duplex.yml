@@ -1,0 +1,16 @@
+---
+- name: Duplex full interfaces
+  hosts: DC,WAN
+  gather_facts: no
+
+
+  tasks:
+    
+    - name: SET DUPLEX FULL ON INTERFACES 
+      ios_config:
+        lines:
+          - duplex full 
+        parents:
+          - Interface Ethernet0/0
+
+

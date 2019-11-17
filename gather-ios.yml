@@ -1,0 +1,16 @@
+---
+- name: Gather facts from device
+  hosts: DC
+  gather_facts: no  
+
+  tasks:
+   - name: INFORMATION FACTS
+     ios_facts:
+       gather_subset: all
+     register: facts
+   
+   - name: DEBUG OS VERSION
+     debug: 
+       var: facts
+
+

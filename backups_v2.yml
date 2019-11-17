@@ -1,0 +1,13 @@
+---
+- name: BACKUP SWITCHES V2.8
+  hosts: DC
+  gather_facts: no
+
+  tasks:
+
+    - name: BACKUP SWTICH IOS
+      ios_config:
+        backup: yes
+        backup_options:
+          filename: "{{ inventory_hostname }}.cfg"
+          dir_path: "./ansible/master_config"

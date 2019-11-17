@@ -1,0 +1,181 @@
+Building configuration...
+
+  
+Current configuration : 2204 bytes
+!
+! Last configuration change at 16:23:56 UTC Sat Oct 12 2019
+!
+version 15.6
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service compress-config
+!
+hostname SW-11
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging discriminator EXCESS severity drops 6 msg-body drops EXCESSCOLL 
+logging buffered 50000
+logging console discriminator EXCESS
+!
+no aaa new-model
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+ip audit notify log
+ip audit po max-events 100
+
+no ip domain lookup
+ip domain name ansiblelab.com
+ip cef
+ipv6 multicast rpf use-bgp
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+username jf privilege 15 password 0 Ansible2019
+!
+vlan internal allocation policy ascending
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+interface Ethernet0/0
+ switchport
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet2/0
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet2/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet2/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet2/3
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet3/0
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet3/1
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet3/2
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Ethernet3/3
+ no ip address
+ shutdown
+ duplex auto
+!
+interface Vlan1
+ ip address 192.168.219.11 255.255.255.0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 192.168.219.2
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input all
+!
+end

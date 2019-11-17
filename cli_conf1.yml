@@ -1,0 +1,17 @@
+---
+- name: TESTING CLI_CONFIG MODULE
+  hosts: DC
+  gather_facts: none 
+
+  tasks:
+
+   - name: SEND CONFIGURATION TO 
+     cli_command:
+       command: show 
+     register: run
+
+
+
+
+
+       

@@ -1,0 +1,33 @@
+---
+- name: GENERATE VLAN PARSERS
+  hosts: DC2
+  vars:
+   ansible_network_os:  ios
+
+
+  tasks:
+    - name: IMPORT ROLE
+      import_role:
+        name: ansible-network.network-engine
+
+    - name: CAPTURE VLANS
+      ios_command:
+        commands: show vlan brief
+      register: brief
+
+    # - name: DISPLAY THE OUTPUT
+    #   debug: 
+    #     var: brief.stdout[0]
+     
+    # - name: SET NTP FACT
+    #   set_fact:
+    #     ntp: "{{ ntp.stdout[0] }}"
+
+    - name: PARSE THE RAW OUTPUT
+      textfsm_parser:
+        file: "/etc/ansible/parsers/vlans_parsers.yaml"  
+        content: "{{ brief.stdout.0 }}"  
+       # register: brief_facts
+
+
+    

@@ -1,0 +1,30 @@
+---
+- name: GENERATE A REPORT
+  hosts: WAN
+  gather_facts: no
+
+  tasks:
+    - name: IMPORT ROLE
+      import_role:
+        name: ansible-network.network-engine
+
+    - name: CAPTURE SHOW IP INTERFACE
+      cli:
+        command: show interfaces
+      register: interfaces
+
+    - name: SET INTERFACE FACT
+      set_fact:
+        interfaces: "{{ interfaces.stdout }}"
+
+    - name: PARSE THE RAW OUTPUT
+      command_parser:
+        file: "/etc/ansible/roles/ansible-network.cisco_ios/parser_templates/cli/show_interfaces.yaml"
+        content: "{{ interfaces }}"
+      register: int_facts
+
+    - name: DEBUG >> PRINT OUTPUT
+      debug:
+        msg: "{{ int_facts }}"
+      
+    - copy: content="{{ int_facts | to_nice_json }}" dest="./configurations/{{ inventory_hostname }}_interfaces.json"

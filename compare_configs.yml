@@ -1,0 +1,16 @@
+---
+- name: COMPARE CONFIGURATIONS
+  hosts: all
+  gather_facts: no 
+
+  tasks: 
+         
+          
+
+    - name: COMPARE RUNNING CONFIG VS. MASTER CONFIG
+      ios_config:
+        intended_config: "./backup/master_config/{{ inventory_hostname }}.cfg"  
+        diff_against: startup 
+ 
+         
+      

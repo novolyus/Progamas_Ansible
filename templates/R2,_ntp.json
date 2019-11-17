@@ -1,0 +1,9 @@
+{
+    "127.127.1.1": {
+        "authentication": null,
+        "master": "our_master",
+        "sanity": "sane",
+        "stratum": "7",
+        "validation": "valid"
+    }
+}

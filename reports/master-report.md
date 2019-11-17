@@ -1,0 +1,104 @@
+# SW12,
+## Facts
+
+Serial Number: 2048002
+OS Version: 15.1(20130726:213425)
+
+## Neighbors
+
+| Device | Local Interface | Neighbor | Neighbor Interface |
+|--------|-----------------|----------|--------------------|
+| SW12, | Ethernet0/0 | AGG-SW(TBBD2D5D00B) | Ethernet2/1 |
+| SW12, | Ethernet0/0 | SW-11.ansiblelab.com | Ethernet0/0 |
+| SW12, | Ethernet0/0 | SW-22.ansiblelab.com | Ethernet0/0 |
+| SW12, | Ethernet0/0 | SW-21.ansiblelab.com | Ethernet0/0 |
+| SW12, | Ethernet0/0 | BR-HELSINKI.ansiblelab.com | Ethernet0/0 |
+
+## Interface list
+ - Ethernet0/0
+ - Ethernet0/1
+ - Ethernet0/2
+ - Ethernet0/3
+ - Ethernet1/0
+ - Ethernet1/1
+ - Ethernet1/2
+ - Ethernet1/3
+ - Ethernet2/0
+ - Ethernet2/1
+ - Ethernet2/2
+ - Ethernet2/3
+ - Ethernet3/0
+ - Ethernet3/1
+ - Ethernet3/2
+ - Ethernet3/3
+ - Vlan1
+---
+# SW21,
+## Facts
+
+Serial Number: 2048005
+OS Version: 15.2(CML_NIGHTLY_20151103)FLO_DSGS7
+
+## Neighbors
+
+| Device | Local Interface | Neighbor | Neighbor Interface |
+|--------|-----------------|----------|--------------------|
+| SW21, | Ethernet0/0 | AGG-SW(TBBD2D5D00B) | Ethernet2/1 |
+| SW21, | Ethernet0/0 | SW-22.ansiblelab.com | Ethernet0/0 |
+| SW21, | Ethernet0/0 | SW-11.ansiblelab.com | Ethernet0/0 |
+| SW21, | Ethernet0/0 | SW-12.ansiblelab.com | Ethernet0/0 |
+| SW21, | Ethernet0/0 | BR-HELSINKI.ansiblelab.com | Ethernet0/0 |
+
+## Interface list
+ - Ethernet0/0
+ - Ethernet0/1
+ - Ethernet0/2
+ - Ethernet0/3
+ - Ethernet1/0
+ - Ethernet1/1
+ - Ethernet1/2
+ - Ethernet1/3
+ - Ethernet2/0
+ - Ethernet2/1
+ - Ethernet2/2
+ - Ethernet2/3
+ - Ethernet3/0
+ - Ethernet3/1
+ - Ethernet3/2
+ - Ethernet3/3
+ - Vlan1
+---
+# SW22,
+## Facts
+
+Serial Number: 2048003
+OS Version: 15.1(20130726:213425)
+
+## Neighbors
+
+| Device | Local Interface | Neighbor | Neighbor Interface |
+|--------|-----------------|----------|--------------------|
+| SW22, | Ethernet0/0 | AGG-SW(TBBD2D5D00B) | Ethernet2/1 |
+| SW22, | Ethernet0/0 | SW-11.ansiblelab.com | Ethernet0/0 |
+| SW22, | Ethernet0/0 | SW-21.ansiblelab.com | Ethernet0/0 |
+| SW22, | Ethernet0/0 | BR-HELSINKI.ansiblelab.com | Ethernet0/0 |
+| SW22, | Ethernet0/0 | SW-12.ansiblelab.com | Ethernet0/0 |
+
+## Interface list
+ - Ethernet0/0
+ - Ethernet0/1
+ - Ethernet0/2
+ - Ethernet0/3
+ - Ethernet1/0
+ - Ethernet1/1
+ - Ethernet1/2
+ - Ethernet1/3
+ - Ethernet2/0
+ - Ethernet2/1
+ - Ethernet2/2
+ - Ethernet2/3
+ - Ethernet3/0
+ - Ethernet3/1
+ - Ethernet3/2
+ - Ethernet3/3
+ - Vlan1

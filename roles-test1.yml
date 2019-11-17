@@ -1,0 +1,9 @@
+---
+- name: configure cisco routers 
+  hosts: DC1
+  gather_facts: no
+    
+  roles:
+    - dns-add
+       
+       

@@ -1,0 +1,17 @@
+ansible_connection : network_cli
+ansible_network_os : ios
+ansible_python_interpreter : /usr/bin/python3
+ansible_user : jf
+ansible_password : Ansible2019
+snmp:
+  contact: Joe
+  location: America
+  communities:
+    - community: public
+      type: ro
+    - community: public123
+      type: ro
+    - community: private
+      type: rw
+    - community: secure
+      type: rw

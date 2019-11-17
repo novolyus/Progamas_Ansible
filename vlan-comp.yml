@@ -1,0 +1,35 @@
+---
+ - name: VLAN COMPLIANCE 
+   hosts: DC2
+   gather_facts: no
+
+   tasks:
+
+      - name: RETRIEVE VLANS JSON RESPONSE
+        ios_command:
+          commands: show vlan brief 
+        register: vlan_data
+
+      - name: DEBUG VLANS AS JSON
+        debug:
+          var: vlan_data
+
+      - name : GENERATE CONFIG 
+        template:
+          src: "./templates/vlans.j2"
+          dest: "./configurations/{{ inventory_hostname }}_vlans.cfg "
+ 
+      # - name: CREATE EXISTING VLANS gather_facts
+      #   set_fact:
+      #     existing_vlans_ids: "{{ vlan_data.stdout.0.vlans.keys()}}"
+  
+      # - name: DEBUG EXISTING VLAN EXISTING VLAN IDs
+      #   debug: 
+      #     var: existing_vlans_ids 
+      
+      # - name: PERFORM COMPLIANCE CHECKS
+      #   assert: 
+      #     that:
+      #       - "'40' in vlan_data"
+      
+    

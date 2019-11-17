@@ -1,0 +1,22 @@
+---
+# tasks file for cisco_nxos
+#
+- name: initialize function
+  include_tasks: includes/init.yaml
+
+- name: set role supported functions
+  set_fact:
+    nxos_functions:
+      - config_manager/load
+      - config_manager/get
+      - config_manager/save
+      - get_facts
+      - noop
+
+- name: validate the requested function is supported
+  fail:
+    msg: "invalid function specified, expected one of {{ nxos_functions }}, got {{ function }}"
+  when: function | default('noop') not in nxos_functions
+
+- name: include function specific tasks and run
+  include_tasks: "{{ function  | default('noop') }}.yaml"

@@ -1,0 +1,80 @@
+---
+- name: NTP PARSER META DATA
+  parser_metadata:
+    version: 2.0
+    command: show ntp associations detail
+    network_os: ios
+
+
+- name: MATCH SECTIONS
+  pattern_match:
+    regex: "^(\\d+\\.\\d+\\.\\d+\\.\\d+) configured,"
+    match_all: yes
+    match_greedy: yes
+  register: context
+
+#"^(\\d+\\.\\d+\\.\\d+\\.\\d+).+(authenticated).\\s+(our_master).\\s+(sane|insane).\\s+(valid|invalid).\\s+\\D+\\s(\\d+)"
+
+- name: MATCH NTP VALUES
+  pattern_group:
+    - name: match IP address
+      pattern_match:
+        regex: "^(\\d+\\.\\d+\\.\\d+\\.\\d+)"
+        content: "{{ item }}"
+      register: ip
+
+    - name: match Authentication
+      pattern_match:
+        regex: "(authenticated)"
+        content: "{{ item }}"
+      register: authentication
+
+    - name: match our_master
+      pattern_match:
+        regex: "(our_master)"
+        content: "{{ item }}"
+      register: master
+
+    - name: match Sanitation
+      pattern_match:
+        regex: "(sane|insane)"
+        content: "{{ item }}"
+      register: sanity
+
+    - name: match validation
+      pattern_match:
+        regex: "(valid|invalid)"
+        content: "{{ item }}"
+      register: validation 
+
+    - name: match Stratum
+      pattern_match:
+        regex: "stratum (\\d+)"
+        content: "{{ item }}"
+      register: stratum 
+
+  loop: "{{ context }}"
+  register: values
+
+- name: TEMPLATE INTERFACE VALUES
+  loop: "{{ values }}"
+  register: ntp_facts
+  export: true
+  export_as: dict
+  # extend: cisco_ios
+  json_template:
+    template:
+      - key: "{{ item.ip.matches.0 }}"
+        object:
+          - key: authentication
+            value: "{{ item.authentication.matches.0 }}"
+          - key: master
+            value: "{{ item.master.matches.0 }}"
+          - key: sanity
+            value: "{{ item.sanity.matches.0 }}"
+          - key: validation
+            value: "{{ item.validation.matches.0 }}"
+          - key: stratum
+            value: "{{ item.stratum.matches.0 }}"
+
+

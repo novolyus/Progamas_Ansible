@@ -1,0 +1,32 @@
+{
+    "ansible_facts": {
+        "ntp_facts": {
+            "130.206.3.166": {
+                "authentication": null,
+                "master": null,
+                "sanity": "insane",
+                "stratum": "16",
+                "validation": "invalid"
+            },
+            "150.214.94.5": {
+                "authentication": null,
+                "master": null,
+                "sanity": "insane",
+                "stratum": "16",
+                "validation": "invalid"
+            },
+            "192.168.219.12": {
+                "authentication": null,
+                "master": "our_master",
+                "sanity": "sane",
+                "stratum": "8",
+                "validation": "valid"
+            }
+        }
+    },
+    "changed": false,
+    "failed": false,
+    "included": [
+        "/etc/ansible/parsers/show_ntp_associations2.yaml"
+    ]
+}

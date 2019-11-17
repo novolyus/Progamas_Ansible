@@ -1,0 +1,23 @@
+---
+- name: Gather facts from device
+  hosts: AGG_DC
+  gather_facts: no  
+
+  tasks:
+   - name: INFORMATION FACTS
+     nxos_facts:
+       gather_subset: all
+     register: facts
+   
+  #  - name: DEBUG FACTS NXOS
+  #    debug: 
+  #      var: facts
+      
+
+
+   - copy: content="{{ facts | to_nice_json }}" dest="./configurations/{{ inventory_hostname }}_facts.json"
+
+  #  - name: COPY FACTS TO FILE
+  #    template:
+  #      src: facts.j2
+  #      dest: "./configurations/{{ inventory_hostname }}_facts.txt" 

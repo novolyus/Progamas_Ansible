@@ -1,0 +1,50 @@
+---
+- name: GENERATE A REPORT
+  hosts: WAN
+
+
+  tasks:
+    - name: IMPORT ROLE
+      import_role:
+        name: ansible-network.network-engine
+
+    - name: CAPTURE SHOW NTP
+      ios_command:
+        commands: show ntp associations detail
+      register: ntp
+
+    - name: DISPLAY THE OUTPUT
+      debug: 
+        var: ntp.stdout[0]
+     
+    - name: SET NTP FACT
+      set_fact:
+        ntp: "{{ ntp.stdout[0] }}"
+
+    - name: PARSE THE RAW OUTPUT
+      command_parser:
+        file: "/etc/ansible/parsers/show_ntp_associations2.yaml"  
+        content: "{{ ntp }}"  # .stdout[0] 
+      register: nes
+
+
+    # - name: SHOW PARSED RESULT
+    #   debug: 
+    #     msg: "{{ ntp_facts }}"
+
+
+    # # GUARDA EL CONTINGUT EN UN ARCHIU (FUNCIONA BE)  
+    - name: COPY TO FILE
+      copy: content="{{ ntp_facts| to_nice_json }}" dest="./templates/{{ inventory_hostname }}_ntp.json"
+
+    # - name: SHOW PARSED RESULT
+    #   debug: 
+    #     msg: "{{ ntp_dus }}"
+
+    # - name: GET SIMPLE VALUE
+    #   debug: 
+    #      var: item
+    #   loop: "{{ ansible_facts | json_query('ntp.sanity') }}"
+
+       
+

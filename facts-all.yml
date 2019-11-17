@@ -1,0 +1,60 @@
+---
+- name: GATHER FACTS FROM  ALL DEVICES
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    
+    - name: GATHER FACTS IOS
+      ios_facts:
+      when: ansible_network_os == 'ios'
+
+    - name: GATHER FACTS NXOS
+      nxos_facts:
+      when: ansible_network_os == 'nxos'
+   
+
+   ## Demonstrate variables##
+   
+    - name: DISPLAY SOME FACTS
+      debug:
+        msg: " The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"
+    
+    - name: FACTS FROM A SPECIFIC HOST
+      debug:
+        var: hostvars['SW22']
+
+    ## Store facts
+
+    - name: WRITE FACTS TO DISK USING A TEMPLATE
+      copy:
+        content: |
+          #jinja2: lstrip_blocks : True
+          IOS  device info:
+            {% for host in groups['DC1'] %}
+            Hostname: {{hostvars[host] [ansible_net_hostname]}}
+              # Version: {{hostvars[host].ansible_net_version}}
+              # #Model: {{hostvars[host].ansible_net_platform}}
+              # Serial: {{hostvars[host].ansible_netserial_num}}
+            {% endfor %}  
+
+          # NXOS  device info:
+          #   {%for host in groups['AGG_DC']%}
+          #     Hostname: {{hostvars[host].ansible_net_hostname}}
+          #     Version: {{hostvars[host].ansible_net_version}}
+          #     Model: {{hostvars[host].ansible_net_platform}}
+          #     Serial: {{hostvars[host].ansible_netserial_num}}
+          #   {%endfor%}  
+        dest: ./configurations
+      run_once: yes 
+
+
+
+
+
+
+
+
+
+
+

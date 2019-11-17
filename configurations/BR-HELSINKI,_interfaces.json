@@ -1,0 +1,301 @@
+{
+    "ansible_facts": {
+        "cisco_ios": {
+            "interfaces": {
+                "Ethernet0/0": {
+                    "admin-status": "enabled",
+                    "counters": {
+                        "in-broadcast-pkts": "1284",
+                        "in-multicast-pkts": null,
+                        "in-octets": "2118",
+                        "in-unicast-pkts": "162014",
+                        "out-errors": "0",
+                        "out-octets": "1621",
+                        "out-unicast-pkts": "229138"
+                    },
+                    "description": "Ansible interface",
+                    "enabled": true,
+                    "mtu": "1500",
+                    "name": "Ethernet0/0",
+                    "oper-status": "up",
+                    "type": "AmdP2"
+                },
+                "Ethernet0/1": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet0/1",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet0/2": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet0/2",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet0/3": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet0/3",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet1/0": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet1/0",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet1/1": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet1/1",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet1/2": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet1/2",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Ethernet1/3": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Ethernet1/3",
+                    "oper-status": "down",
+                    "type": "AmdP2"
+                },
+                "Serial2/0": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial2/0",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial2/1": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial2/1",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial2/2": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial2/2",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial2/3": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial2/3",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial3/0": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial3/0",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial3/1": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial3/1",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial3/2": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial3/2",
+                    "oper-status": "down",
+                    "type": "M4T"
+                },
+                "Serial3/3": {
+                    "admin-status": "disabled",
+                    "counters": {
+                        "in-broadcast-pkts": "0",
+                        "in-multicast-pkts": null,
+                        "in-octets": "0",
+                        "in-unicast-pkts": "0",
+                        "out-errors": "0",
+                        "out-octets": "0",
+                        "out-unicast-pkts": "0"
+                    },
+                    "description": null,
+                    "enabled": false,
+                    "mtu": "1500",
+                    "name": "Serial3/3",
+                    "oper-status": "down",
+                    "type": "M4T"
+                }
+            }
+        }
+    },
+    "changed": false,
+    "failed": false,
+    "included": [
+        "/etc/ansible/roles/ansible-network.cisco_ios/parser_templates/cli/show_interfaces.yaml"
+    ]
+}

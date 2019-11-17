@@ -1,0 +1,42 @@
+---
+- name: BACKUP SWITCHES
+  hosts: "DC, AGG_DC"
+  gather_facts: no
+
+  tasks:
+
+    - name: BACKUP SWTICH IOS
+      ios_config:
+        backup: yes
+      register: backup_ios
+      when: ansible_network_os == 'ios'
+
+    - name: BACKUP SWITCH NXOS
+      nxos_config:
+        backup: yes
+      register: backup_nxos
+      when: ansible_network_os == 'nxos'
+
+    - name: CREATE FILE DIR
+      file:
+        path: "./ansible/backups/{{ inventory_hostname }}"
+        state: directory
+        recurse: yes
+    
+    - name: COPY BACKUPS TO FILE IOS
+      copy:
+        src: "{{ backup_ios.backup_path }}"
+        dest: "./ansible/backups/{{ inventory_hostname }}/{{ inventory_hostname }}.bck"
+      when: ansible_network_os == 'ios'
+
+    - name: COPY BACKUPS TO FILE NXOS
+      copy:
+        src: "{{ backup_nxos.backup_path }}"
+        dest: "./ansible/backups/{{ inventory_hostname }}/{{ inventory_hostname }}.bck"
+      when: ansible_network_os == 'nxos'
+
+
+
+
+
+

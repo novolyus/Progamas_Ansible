@@ -1,0 +1,21 @@
+---
+- name: VLAN PARSER
+  hosts: DC1
+  gather_facts: no
+  vars:
+    vlan_parse_path: /etc/ansible/parsers/parser_vlan.yaml
+
+  tasks:
+
+    - name: get show vlan output
+      ios_command:
+        commands: show vlan
+      register: vlan_output
+
+    - name: DEBUG OS VERSION
+      debug: 
+       var: vlan_output.stdout[0]
+
+    # - set_fact:
+    #     ios_vlans: "{{ vlan_output.stdout[0] | parse_cli(vlan_parse_path) }}"
+

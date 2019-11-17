@@ -1,0 +1,19 @@
+vars:
+  ntp:
+    id: "{{ item.ip }}"
+    name: "{{ item.authentication }}"
+    master: "{{ item.master }}"
+    sanity: "{{ item.sanity }}"
+    validation: "{{ item.valid }}"
+    stratum: "{{ item.stratum }}"
+    
+
+keys:
+  ntps:
+    value: "{{ ntp }}"
+    items: "^(<ip>\\d+\\.\\d+\\.\\d+\\.\\d+).+(?P<authentication>authenticated,).\\s+(?P<master>our_master,).\\s+(?P<sanity>sane|insane\\.).\\s+(?P<valid>valid|invalid).\\s+\\D+\\s(?P<stratum>\\d+)?"
+
+#"^(\\d+\\.\\d+\\.\\d+\\.\\d+).+(authenticated).\\s+(our_master).\\s+(sane|insane).\\s+(valid|invalid).\\s+\\D+\\s(\\d+)"
+
+
+ ## items: "^(?P<vlan_id>\\d+)\\s+(?P<name>\\w+)\\s+(?P<state>active|act/lshut|suspended)"

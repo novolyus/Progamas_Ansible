@@ -1,0 +1,23 @@
+---
+- name: Gather facts from device
+  hosts: DC
+  gather_facts: no  
+
+  tasks:
+   - name: INFORMATION FACTS
+     ios_facts:
+       gather_subset: all
+     register: facts
+   
+   - name: GENERATE REPORT
+     template:
+       src: "/etc/ansible/reports/facts.j2"
+       dest: "/etc/ansible/reports/facts/{{ inventory_hostname }}.md"
+    
+   - name: CREATE MASTER REPORT
+     assemble:
+       src: "/etc/ansible/reports/facts/"
+       dest: "/etc/ansible/reports/master-report.md"
+       delimiter: "---"
+     run_once: True
+  

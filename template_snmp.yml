@@ -1,0 +1,42 @@
+---
+  - name: Generate SMNP config
+    hosts: all
+    gather_facts: no
+    become: yes
+
+    tasks:
+
+    # - name: Create directory
+    #   file: 
+    #     path: /etc/ansible/configurations
+    #     state: directory
+    
+    - name: Generate IOS SNMP configuration 
+      template: 
+        src: "/etc/ansible/templates/snmp.j2"
+        dest: "/etc/ansible/configurations/{{ inventory_hostname }}_snmp.cfg"
+      when: ansible_network_os == 'ios'  
+
+    - name: Generate NXOS SNMP configuration 
+      template: 
+        src: "/etc/ansible/templates/snmp_nxos.j2"
+        dest: "/etc/ansible/configurations/{{ inventory_hostname }}_snmp.cfg"
+      when: ansible_network_os == 'nxos' 
+
+
+    # - name: DEPLOY CONFIG INTO DEVICE IOS
+    #   ios_config:
+    #     src: "/etc/ansible/configurations/{{ inventory_hostname }}_snmp.cfg"
+    #   when: ansible_network_os == 'ios'  
+
+
+    # - name: DEPLOY CONFIG INTO DEVICE NXOS
+    #   nxos_config:
+    #     src: "/etc/ansible/configurations/{{ inventory_hostname }}_snmp.cfg"
+    #   when: ansible_network_os == 'nxos' 
+
+
+    ############    NOT WORKING ###############
+    # - name: DEPLOY CONFIG PLATFORM AGNOSTIC 
+    #   cli_config:
+    #     config: "/etc/ansible/configurations/{{ inventory_hostname }}_snmp.cfg"

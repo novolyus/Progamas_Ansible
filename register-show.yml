@@ -1,0 +1,22 @@
+---
+- name: USING REGISTER ATTRIBUTE
+  hosts: all
+  gather_facts: no  
+
+  tasks:
+
+
+   - name: ISSUE SHOW COMMAND
+     ios_command:
+       commands: 
+         - "show run | inc snmp-server community"
+     register: snmp_data
+
+   - name: DEBUG SNMP_DATA
+     debug:
+       var: snmp_data['stdout'][0]
+
+   - name: WRITE DATA TO FILE
+     template:
+       src: basic.j2
+       dest: "./configurations/ {{ inventory_hostname }}.txt"

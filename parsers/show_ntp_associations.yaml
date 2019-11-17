@@ -1,0 +1,37 @@
+---
+- name: NTP PARSER META DATA
+  parser_metadata:
+    version: 1.0
+    command: show ntp associations detail
+    network_os: ios
+
+
+- name: MATCH PATTERN
+  pattern_match:
+    regex: "^(\\d+\\.\\d+\\.\\d+\\.\\d+).+(authenticated).\\s+(our_master).\\s+(sane|insane).\\s+(valid|invalid).\\s+\\D+\\s(\\d+)"
+    match_all: yes
+   # match_greedy: yes
+  register: section
+
+- name: GENERATE JASON & THE ARGONAUTS
+  json_template:
+    template:
+      - key: "{{ item.matches.0 }}"
+        object:
+        - key: data
+          object:
+            - key: ip
+              value: "{{ item.matches.0 }}"
+            - key: authentication
+              value: "{{ item.matches.1 }}"
+            - key: master
+              value: "{{ item.matches.2 }}"
+            - key: mental_health
+              value: "{{ item.matches.3 }}"
+            - key: validation
+              value: "{{ item.matches.4 }}"
+            - key: stratum
+              value: "{{ item.matches.5 }}"
+  loop: "{{ section }}"
+  export: yes
+  register: ntp_associations_facts   

@@ -1,0 +1,19 @@
+---
+- name: ios config tests
+  hosts: WAN
+  gather_facts: no
+  
+  tasks:
+    - name: IOS >> No shut the interfaces
+      ios_config:
+        lines:
+          - description ** Configured by Ansible **
+          - no shutdown
+        parents: interface Ethernet 0/3
+
+
+    - name: CLI CONFIG >> No shut the interfaces 
+      cli_config:
+        config: |
+          interface Ethernet 0/3
+          no shutdown

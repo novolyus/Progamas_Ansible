@@ -1,0 +1,22 @@
+---
+- name: Create access vlans 
+  hosts: DC1
+  gather_facts: no
+
+  tasks:
+  - name: create VLAN 50
+    ios_vlan:
+      vlan_id: 50
+      name: PRD-vlan
+      state: present
+      
+
+  - name: create VLAN 40
+    ios_vlan:
+      vlan_id: 40
+      name: PRE-vlan
+      state: present
+    
+
+
+

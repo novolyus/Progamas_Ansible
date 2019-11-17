@@ -1,0 +1,19 @@
+
+[DC:children]
+DC1
+DC2
+
+[DC1]
+SW11, ansible_host=192.168.219.11
+SW12, ansible_host=192.168.219.122
+
+[DC2]
+SW21, ansible_host=192.168.219.25
+SW22, ansible_host=192.168.219.22
+
+[AGG_DC]
+AGGSW, ansible_host=192.168.219.55
+
+[WAN]
+BR-HELSINKI, ansible_host=192.168.219.26
+R2, ansible_host=192.168.219.12

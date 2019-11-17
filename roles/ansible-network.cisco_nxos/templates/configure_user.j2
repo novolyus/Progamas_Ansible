@@ -1,0 +1,39 @@
+{% set cmd_list = [] %}
+
+{% for user in users %}
+
+{% set cmd = '' %}
+
+{% if user.state is defined and user.state == 'absent' %}
+{% set cmd = 'no username ' + user.name %}
+{{ cmd_list.append(cmd) }}
+
+{% else %}
+
+{% if user.password is not defined %}
+{% set cmd = 'username ' + user.name %}
+{% elif user.password %}
+{% set cmd = 'username ' + user.name + ' password ' + user.password %}
+{% endif %}
+
+{% if user.role is defined %}
+{% set cmd = cmd + ' role ' + user.role %}
+{% elif user.privilege is defined %}
+{% set cmd = cmd + ' priv-lvl ' + user.privilege|string %}
+{% endif %}
+
+{% if user.expire is defined %}
+{% set cmd = cmd + ' expire ' + user.expire|string %}
+{% endif %}
+
+{{ cmd_list.append(cmd) }}
+
+{% if user.sshkey is defined %}
+{% set cmd = 'username ' + user.name + ' sshkey ' + user.sshkey %}
+{{ cmd_list.append(cmd) }}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+{{ cmd_list|join('\n') }}
+
