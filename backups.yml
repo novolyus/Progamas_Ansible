@@ -26,7 +26,7 @@
     - name: COPY BACKUPS TO FILE IOS
       copy:
         src: "{{ backup_ios.backup_path }}"
-        dest: "./ansible/backups/{{ inventory_hostname }}/{{ inventory_hostname }}.bck"
+        dest: "./ansible/backups/{{ inventory_hostname }}/{{ inventory_hostname }}_ios.bck"
       when: ansible_network_os == 'ios'
 
     - name: COPY BACKUPS TO FILE NXOS
