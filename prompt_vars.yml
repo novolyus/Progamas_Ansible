@@ -1,0 +1,21 @@
+---
+- name: Prompted and vars stored in config file
+  hosts: localhost 
+  gather_facts: false
+  vars_prompt:
+    - name: "ip"
+      prompt: "Loopback ip address: "
+      private: no 
+    - name: "hostname"
+      prompt: "INtro hostname: "
+      private: no
+
+  tasks:
+    
+  ## CREATE THE CONFIG FILE WITH THE JINJA TEMPLATE domenico.j2    
+    - name: TEMPLATE TO FILE CONFIG 
+      template:
+        src: ./templates/domenico.j2
+        dest: ./configurations/router.cfg
+
+

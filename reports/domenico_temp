@@ -4,3 +4,9 @@ hostname {{item.hostname}}
 interface loopback 0
   description This is the L0
   ip address {{item.loopback}}
+
+
+## tasks file
+- name: generate configuration
+  template: src=template.j2 dest=/etc/ansible/configs/{{item.hostname}}txt
+  with_items: {{ routers }}
