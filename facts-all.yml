@@ -30,13 +30,13 @@
       copy:
         content: |
           #jinja2: lstrip_blocks : True
-          IOS  device info:
-            {% for host in groups['DC1'] %}
-            Hostname: {{hostvars[host] [ansible_net_hostname]}}
+          # IOS  device info:
+          #   {% for host in groups['DC1'] %}
+          #   Hostname: {{hostvars[host] [ansible_net_hostname]}}
               # Version: {{hostvars[host].ansible_net_version}}
               # #Model: {{hostvars[host].ansible_net_platform}}
               # Serial: {{hostvars[host].ansible_netserial_num}}
-            {% endfor %}  
+            # {% endfor %}  
 
           # NXOS  device info:
           #   {%for host in groups['AGG_DC']%}

@@ -50,7 +50,8 @@
   debug:
     var: vlans
 
-- set_fact:
+- name: set fuck vals 
+  set_fact:
     nxos_vlans: "{{ vlans }}"
 
 - name: "fetch template for configuring vlan(s)"

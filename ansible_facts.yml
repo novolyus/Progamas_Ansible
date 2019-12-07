@@ -1,0 +1,23 @@
+---
+- name: GATHER FACTS FROM  ALL DEVICES
+  hosts: DC2
+  gather_facts: no
+
+  tasks:
+    
+    - name: GATHER FACTS IOS
+      ios_facts:
+        gather_subset: all
+      register: facts
+
+    - name: SHOW FACTS
+      debug: 
+        var: facts
+      
+    
+    - name: show results
+      copy: content= "{{ facts }}" dest="./configurations/fcts.txt"
+
+
+
+      

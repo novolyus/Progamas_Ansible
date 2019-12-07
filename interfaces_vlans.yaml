@@ -1,0 +1,26 @@
+- name: configure vlans from roles
+  hosts: DC2
+  gather_facts: no
+  vars: 
+    interfaces:
+      Ethernet2/0:
+        - "vlan 2"
+        
+      - Ethernet2/1
+      - Ethernet2/2
+      - Ethernet2/3
+      - Ethernet3/0
+      - Ethernet3/1
+      - Ethernet3/2
+      - Ethernet3/3 
+  
+
+  tasks:
+
+    - name: ADD VLANS TO TRUNK INTERFACES
+      ios_l2_interface:
+        name: "{{ item }}"
+        mode: trunk
+      loop: "{{ interfaces }}"
+
+    
